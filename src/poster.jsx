@@ -36,7 +36,8 @@ const Poster = () => {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'https://elex-fsm-dev.ifs.cloud/MetrixIntegrationService/M5WebService.asmx/ProcessMessage',
+            url: 'https://proxy-server-woad-six.vercel.app/https://elex-fsm-dev.ifs.cloud/MetrixIntegrationService/M5WebService.asmx/ProcessMessage',
+            // url: 'https://elex-fsm-dev.ifs.cloud/MetrixIntegrationService/M5WebService.asmx/ProcessMessage',
             headers: { 
                 'Content-Type': 'application/xml', 
                 'Authorization': `Basic ${auth}`,
