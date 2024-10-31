@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import Editor from '@monaco-editor/react';
 import { Button } from "@nextui-org/react";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Poster = () => {
@@ -13,6 +12,10 @@ const Poster = () => {
     const editorRequestRef = useRef(null);
     const editorResponseRef = useRef(null);
 
+    useEffect(() => {
+
+    }, []);
+    
     function handleEditorRequestDidMount(editor, monaco) {
         editorRequestRef.current = editor;
     }
@@ -74,5 +77,6 @@ const Poster = () => {
         </div>
     );
 };
+
 
 export default Poster;

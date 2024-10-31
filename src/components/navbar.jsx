@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
-import { Navbar as NextUINavbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu } from "@nextui-org/react";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Checkbox, Input } from "@nextui-org/react";
+import { Navbar as NextUINavbar, NavbarBrand, NavbarContent, NavbarItem, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu } from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Input } from "@nextui-org/react";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -21,6 +22,7 @@ const Navbar = () => {
 
 
   function switchEnvironment(env) {
+    localStorage.setItem("env", env);
     setEnvironment(env)
   };
 
@@ -45,9 +47,29 @@ const Navbar = () => {
     <>
     <NextUINavbar>
       <NavbarBrand>
-        <p className="font-bold text-inherit">Jevin FSM</p>
+        <p className="font-bold text-inherit">Jevin</p>
       </NavbarBrand>
       
+
+      <Dropdown>
+        <DropdownTrigger>
+          <Button
+            disableRipple
+            startContent={<FontAwesomeIcon icon="fa-solid fa-tools" />} endContent={<FontAwesomeIcon icon="fa-solid fa-chevron-down" />}
+            className="p-0 bg-transparent data-[hover=true]:bg-transparent">
+              Tools
+          </Button>
+        </DropdownTrigger>
+        <DropdownMenu aria-label="Link Actions">
+          <DropdownItem key="home" href="/poster">
+            Poster
+          </DropdownItem>
+          <DropdownItem key="about" href="/sql">
+            SQL
+          </DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+
       {/* <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem isActive>
           <Link href="#" aria-current="page">
@@ -69,7 +91,7 @@ const Navbar = () => {
                 <Button
                   disableRipple
                   className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                  // endContent={icons.chevron}
+                  endContent={<FontAwesomeIcon icon="fa-solid fa-chevron-down" />}
                   radius="sm"
                   variant="light"
                 >
